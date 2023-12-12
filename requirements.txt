@@ -1,3 +1,3 @@
-PIL
+pillow
 streamlit
 streamlit_option_menu
