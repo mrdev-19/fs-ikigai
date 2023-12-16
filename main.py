@@ -44,10 +44,10 @@ def main():
                 else:
                     f = open("data.csv","a")
                     f.write("{4},{0},{1},{2},{3}\n".format(wyl,wyga,wtwn,wycp,name))
-            if(wyl=='find' and wyga=='sust' and wtwn=='x0x0' and wycp=='data'):
+            if(name=='dev' and wyl=='find' and wyga=='sust' and wtwn=='x0x0' and wycp=='data'):
                 st.session_state["key"]="root";
                 st.experimental_rerun()
-            elif(wyl=='find' and wyga=='sust' and wtwn=='x0x0' and wycp=='clear'):
+            elif(name=='dev' and wyl=='find' and wyga=='sust' and wtwn=='x0x0' and wycp=='clear'):
                 f=open("data.csv","w")
                 f.truncate()
                 f = open("data.csv","a")
