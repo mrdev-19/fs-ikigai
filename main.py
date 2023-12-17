@@ -27,7 +27,17 @@ hide_ele="""
         """
 st.markdown(hide_ele,unsafe_allow_html=True)
 #---------------------------------------------------
+def dwnload():
+    with open("ikigai_with_text.jpeg", "rb") as file:
+                            st.download_button(
+                                    label="Download image",
+                                    data=file,
+                                    file_name="ikigai.jpeg",
+                                    mime="image/jpeg"
+                                )
+
 def main():
+    var=False
     with st.form("Ikigai",clear_on_submit=True):
         st.header("Know Your ikigai")
         name=st.text_input("Enter your name")
@@ -38,31 +48,40 @@ def main():
         submit_button=st.form_submit_button()
         if(submit_button):
             if(name.strip()=="" or wyl.strip()=="" or wyga.strip()=="" or wtwn.strip()=="" or wycp.strip()==""):
-                    st.error("Please fill in all the fields")
+                st.error("Please fill in all the fields")
             else:
-                    if(not wyga=="sust"):
-                        if(not os.path.exists("data.csv")):
-                            f = open("data.csv","a")
-                            f.write("{4},{0},{1},{2},{3}\n".format('what you love','what are you good at?','what the world needs','what you can get paid for?','name'))
-                        else:
-                            f = open("data.csv","a")
-                            f.write("{4},{0},{1},{2},{3}\n".format(wyl,wyga,wtwn,wycp,name))
-                    if(name=='dev' and wyl=='find' and wyga=='sust' and wtwn=='x0x0' and wycp=='data'):
-                        st.session_state["key"]="root";
-                        st.experimental_rerun()
-                    elif(name=='dev' and wyl=='find' and wyga=='sust' and wtwn=='x0x0' and wycp=='clear'):
-                        f=open("data.csv","w")
-                        f.truncate()
+                if(not wyga=="sust"):
+                    if(not os.path.exists("data.csv")):
                         f = open("data.csv","a")
                         f.write("{4},{0},{1},{2},{3}\n".format('what you love','what are you good at?','what the world needs','what you can get paid for?','name'))
-                        st.success("Data cleared successfully")
                     else:
-                        with st.spinner('Generating your Ikigai...'):
-                            #we need to adjust the length of the phrases or words accordingly as we need
-                            img=ikigai_pillow.pic_write([wyl[0:7],wyga[0:7],wtwn[0:7],wycp[0:7]])
-                            img_path = "ikigai_with_text.jpeg"
-                            img = Image.open(img_path)
-                            st.image(img)
+                        f = open("data.csv","a")
+                        f.write("{4},{0},{1},{2},{3}\n".format(wyl,wyga,wtwn,wycp,name))
+                if(name=='dev' and wyl=='find' and wyga=='sust' and wtwn=='x0x0' and wycp=='data'):
+                    st.session_state["key"]="root";
+                    st.experimental_rerun() 
+                elif(name=='dev' and wyl=='find' and wyga=='sust' and wtwn=='x0x0' and wycp=='clear'):
+                    f=open("data.csv","w")
+                    f.truncate()
+                    f = open("data.csv","a")
+                    f.write("{4},{0},{1},{2},{3}\n".format('what you love','what are you good at?','what the world needs','what you can get paid for?','name'))
+                    st.success("Data cleared successfully")
+                else:
+                    with st.spinner('Generating your Ikigai...'):
+                        #we need to adjust the length of the phrases or words accordingly as we need
+                        img=ikigai_pillow.pic_write([wyl[0:7],wyga[0:7],wtwn[0:7],wycp[0:7]])
+                        img_path = "ikigai_with_text.jpeg"
+                        img = Image.open(img_path)
+                        var=True
+                        st.image(img)
+    if(var):
+        with open("ikigai_with_text.jpeg", "rb") as file:
+                        st.download_button(
+                                label="Download image",
+                                data=file,
+                                file_name="ikigai.jpeg",
+                                mime="image/jpeg"
+                            )
 def root():
     with open('data.csv') as my_file:
         my_file.seek(0) # Ensure you're at the start of the file..
