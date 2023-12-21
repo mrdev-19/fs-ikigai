@@ -33,7 +33,7 @@ def pic_write(responses_from_user):
 # Use textbbox instead of textsize
     bbox = draw.textbbox((0, 0), msg, font=font)
     w, text_height = bbox[2] - bbox[0], bbox[3] - bbox[1]
-    positions = [(((W-w)/2)-20,505),(480,180),(170,500),(480,800),(750,500),(350,430),(610,430),(350,630),(610,630)]
+    positions = [(((W-w)/2)-10,505),(480,180),(170,500),(480,800),(750,500),(350,430),(610,430),(350,630),(610,630)]
     #if we have another font we can use this
     add_text_to_image(input_image_path, output_image_path, texts_to_add, positions, font_size, font_path=custom_font_path)
     #we can change the text size , font , and positions as needed 
