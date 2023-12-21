@@ -48,15 +48,15 @@ def main():
     var=False
     with st.form("Ikigai",clear_on_submit=True):
         st.header("Know Your ikigai")
-        name=st.text_input("Enter your name")
+        name=st.text_input("Enter your name",placeholder="John.")
         wyl=st.text_input("What you love?",placeholder="Enter three answers separated by commas each not exceeding 10 characters")
         wyga=st.text_input("What are you good at?",placeholder="Enter three answers separated by commas each not exceeding 10 characters")
         wtwn=st.text_input("What the world needs?",placeholder="Enter three answers separated by commas each not exceeding 10 characters")
         wycp=st.text_input("What you can be paid for?",placeholder="Enter three answers separated by commas each not exceeding 10 characters")
-        prof=st.text_input("Profession")
-        voca=st.text_input("Vocation")
-        miss=st.text_input("Mission")
-        visi=st.text_input("Passion")
+        prof=st.text_input("Profession",placeholder="Teacher,Doctor,Engineer,etc.")
+        voca=st.text_input("Vocation",placeholder="Research,Teaching,etc.")
+        miss=st.text_input("Mission",placeholder="Peace,Education,etc.")
+        visi=st.text_input("Passion",placeholder="Creativity,Discovery,etc.")
         submit_button=st.form_submit_button()
         if(submit_button):
             if(name.strip()=="" or wyl.strip()=="" or wyga.strip()=="" or wtwn.strip()=="" or wycp.strip()=="" or prof.strip()=="" or voca.strip()=="" or miss.strip()=="" or visi.strip()==""):
