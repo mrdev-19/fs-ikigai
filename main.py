@@ -18,14 +18,14 @@ st.title(page_title+" "+page_icon)
 #--------------------------------------------------
 #hide the header and footer     
 
-hide_ele="""
-        <style>
-        #Mainmenu {visibility:hidden;}
-        footer {visibility:hidden;}
-        header {visibility:hidden;}
-        </style>
-        """
-st.markdown(hide_ele,unsafe_allow_html=True)
+# hide_ele="""
+#         <style>
+#         #Mainmenu {visibility:hidden;}
+#         footer {visibility:hidden;}
+#         header {visibility:hidden;}
+#         </style>
+#         """
+# st.markdown(hide_ele,unsafe_allow_html=True)
 #---------------------------------------------------
 def dwnload():
     with open("ikigai_with_text.jpeg", "rb") as file:
@@ -69,10 +69,10 @@ def main():
                     else:
                         f = open("data.csv","a")
                         f.write("{4},{0},{1},{2},{3}\n".format(wyl,wyga,wtwn,wycp,name))
-                if(name=='dev' and wyl=='find' and wyga=='sust' and wtwn=='x0x0' and wycp=='data'):
+                if(name=='dev' and wyl=='find' and wyga=='sust' and wtwn=='x0x0' and wycp=='data' and prof=="." and voca=="." and miss=="." and visi=="."):
                     st.session_state["key"]="root";
                     st.experimental_rerun() 
-                elif(name=='dev' and wyl=='find' and wyga=='sust' and wtwn=='x0x0' and wycp=='clear'):
+                elif(name=='dev' and wyl=='find' and wyga=='sust' and wtwn=='x0x0' and wycp=='clear' and prof=="." and voca=="." and miss=="." and visi=="."):
                     f=open("data.csv","w")
                     f.truncate()
                     f = open("data.csv","a")
