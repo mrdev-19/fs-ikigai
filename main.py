@@ -18,14 +18,14 @@ st.title(page_title+" "+page_icon)
 #--------------------------------------------------
 #hide the header and footer     
 
-# hide_ele="""
-#         <style>
-#         #Mainmenu {visibility:hidden;}
-#         footer {visibility:hidden;}
-#         header {visibility:hidden;}
-#         </style>
-#         """
-# st.markdown(hide_ele,unsafe_allow_html=True)
+hide_ele="""
+        <style>
+        #Mainmenu {visibility:hidden;}
+        footer {visibility:hidden;}
+        header {visibility:hidden;}
+        </style>
+        """
+st.markdown(hide_ele,unsafe_allow_html=True)
 #---------------------------------------------------
 def dwnload():
     with open("ikigai_with_text.jpeg", "rb") as file:
