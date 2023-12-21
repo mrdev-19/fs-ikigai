@@ -35,19 +35,31 @@ def dwnload():
                                     file_name="ikigai.jpeg",
                                     mime="image/jpeg"
                                 )
+def process_string(str):
+    s=""
+    for i in str:
+        if(i==','):
+             s+="\n"
+        else:
+             s+=i
+    return s
 
 def main():
     var=False
     with st.form("Ikigai",clear_on_submit=True):
         st.header("Know Your ikigai")
         name=st.text_input("Enter your name")
-        wyl=st.text_input("What you love?")
-        wyga=st.text_input("What are you good at?")
-        wtwn=st.text_input("What the world needs?")
-        wycp=st.text_input("What you can be paid for?")
+        wyl=st.text_input("What you love?",placeholder="Enter three answers separated by commas each not exceeding 10 characters")
+        wyga=st.text_input("What are you good at?",placeholder="Enter three answers separated by commas each not exceeding 10 characters")
+        wtwn=st.text_input("What the world needs?",placeholder="Enter three answers separated by commas each not exceeding 10 characters")
+        wycp=st.text_input("What you can be paid for?",placeholder="Enter three answers separated by commas each not exceeding 10 characters")
+        prof=st.text_input("Profession")
+        voca=st.text_input("Vocation")
+        miss=st.text_input("Mission")
+        visi=st.text_input("Passion")
         submit_button=st.form_submit_button()
         if(submit_button):
-            if(name.strip()=="" or wyl.strip()=="" or wyga.strip()=="" or wtwn.strip()=="" or wycp.strip()==""):
+            if(name.strip()=="" or wyl.strip()=="" or wyga.strip()=="" or wtwn.strip()=="" or wycp.strip()=="" or prof.strip()=="" or voca.strip()=="" or miss.strip()=="" or visi.strip()==""):
                 st.error("Please fill in all the fields")
             else:
                 if(not wyga=="sust"):
@@ -68,8 +80,9 @@ def main():
                     st.success("Data cleared successfully")
                 else:
                     with st.spinner('Generating your Ikigai...'):
+                        wyl,wyga,wtwn,wycp=process_string(wyl),process_string(wyga),process_string(wtwn),process_string(wycp)
                         #we need to adjust the length of the phrases or words accordingly as we need
-                        img=ikigai_pillow.pic_write([wyl[0:7],wyga[0:7],wtwn[0:7],wycp[0:7]])
+                        img=ikigai_pillow.pic_write([name,wyl,wyga,wycp,wtwn,visi,miss,prof,voca])
                         img_path = "ikigai_with_text.jpeg"
                         img = Image.open(img_path)
                         var=True
