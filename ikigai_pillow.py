@@ -22,7 +22,7 @@ def pic_write(responses_from_user):
     #we can add the text we want to add here
     texts_to_add=responses_from_user
     #positions fo the texts def image size is 1080 x 1080
-    custom_font_path = "Gaegu-bold.ttf"
+    custom_font_path = "Gaegu-Bold.ttf"
     texts_to_add[0]=texts_to_add[0]+"'s"
     W, H = 1080, 1080
     msg = texts_to_add[0]
