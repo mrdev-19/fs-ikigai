@@ -40,6 +40,8 @@ def process_string(str):
     for i in str:
         if(i==','):
              s+="\n"
+        elif(i==' '):
+             continue
         else:
              s+=i
     return s
