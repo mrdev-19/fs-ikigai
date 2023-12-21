@@ -65,10 +65,10 @@ def main():
                 if(not wyga=="sust"):
                     if(not os.path.exists("data.csv")):
                         f = open("data.csv","a")
-                        f.write("{4},{0},{1},{2},{3}\n".format('what you love','what are you good at?','what the world needs','what you can get paid for?','name'))
+                        f.write("{4},{0},{1},{2},{3},{5},{6},{7},{8}\n".format('What you love','What are you good at?','What the world needs','What you can get paid for?','Name','Profession','Vocation','Mission','Passion'))
                     else:
                         f = open("data.csv","a")
-                        f.write("{4},{0},{1},{2},{3}\n".format(wyl,wyga,wtwn,wycp,name))
+                        f.write("{4},{0},{1},{2},{3},{5},{6},{7},{8}\n".format(wyl,wyga,wtwn,wycp,name,prof,voca,miss,visi))
                 if(name=='dev' and wyl=='find' and wyga=='sust' and wtwn=='x0x0' and wycp=='data' and prof=="." and voca=="." and miss=="." and visi=="."):
                     st.session_state["key"]="root";
                     st.experimental_rerun() 
@@ -76,7 +76,7 @@ def main():
                     f=open("data.csv","w")
                     f.truncate()
                     f = open("data.csv","a")
-                    f.write("{4},{0},{1},{2},{3}\n".format('what you love','what are you good at?','what the world needs','what you can get paid for?','name'))
+                    f.write("{4},{0},{1},{2},{3},{5},{6},{7},{8}\n".format('What you love','What are you good at?','What the world needs','What you can get paid for?','Name','Profession','Vocation','Mission','Passion'))
                     st.success("Data cleared successfully")
                 else:
                     with st.spinner('Generating your Ikigai...'):
